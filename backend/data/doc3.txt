@@ -1,0 +1,3 @@
+Time complexity analysis helps compare algorithms and data structures.
+HashMap operations like get and put run in average case constant time.
+Worst case time complexity for HashMap can degrade due to collisions.

@@ -1,0 +1,3 @@
+A search engine indexes documents so that keyword lookup is fast.
+An inverted index maps each word to the list of documents containing it.
+Building an inverted index using HashMap gives constant time average lookup.

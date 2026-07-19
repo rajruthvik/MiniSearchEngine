@@ -1,0 +1,3 @@
+File handling in Java is done using classes like File, FileReader and BufferedReader.
+Reading a text file line by line allows a program to process large documents.
+This search engine reads every file in a folder and builds an index from the words.
