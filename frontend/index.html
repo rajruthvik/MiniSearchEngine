@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiniSearch — Inverted Index Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <main class="page">
+
+    <header class="hero">
+      <p class="eyebrow">HashMap-backed keyword search</p>
+      <h1>Every word remembers<br />where it lives.</h1>
+      <p class="hero-sub">
+        Four text files, indexed once into a <code>HashMap&lt;String, HashMap&lt;String, Integer&gt;&gt;</code> —
+        word → file → frequency. Search hits a bucket in O(1) average time instead of scanning every document.
+      </p>
+    </header>
+
+    <section class="drawer" aria-label="Search">
+      <div class="drawer-tab">
+        <span class="drawer-label">CATALOG</span>
+      </div>
+
+      <div class="search-panel">
+        <div class="mode-toggle" role="tablist">
+          <button class="mode-btn active" data-mode="single" role="tab" aria-selected="true">single keyword</button>
+          <button class="mode-btn" data-mode="all" role="tab" aria-selected="false">match all (AND)</button>
+        </div>
+
+        <form id="search-form" autocomplete="off">
+          <input
+            type="text"
+            id="query-input"
+            placeholder="try: hashmap"
+            aria-label="Search keyword"
+          />
+          <button type="submit" id="search-btn">Search</button>
+        </form>
+
+        <p class="hint" id="hint">Press enter, or try one of these:</p>
+        <div class="chip-row" id="sample-chips">
+          <button class="chip" data-query="hashmap">hashmap</button>
+          <button class="chip" data-query="index">index</button>
+          <button class="chip" data-query="file">file</button>
+          <button class="chip" data-query="time complexity">time complexity</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- signature element: live view into the HashMap lookup itself -->
+    <section class="lookup-panel" id="lookup-panel" aria-live="polite">
+      <div class="lookup-header">
+        <span class="dot"></span>
+        <span class="lookup-title">under the hood</span>
+      </div>
+      <pre id="lookup-code">// search a keyword to see the lookup here</pre>
+    </section>
+
+    <section class="results" id="results" aria-live="polite">
+      <div class="empty-state" id="empty-state">
+        <p>No search yet. The catalog is loaded — 90 unique words across 4 files — waiting on a query.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Java backend (plain <code>com.sun.net.httpserver</code>, no framework) · <a href="https://github.com" id="repo-link" target="_blank" rel="noopener">source</a></p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
